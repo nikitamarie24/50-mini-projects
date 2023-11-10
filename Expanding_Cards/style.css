@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+* {
+    box-sizing: border-box;
+    /* This defines how the width and the height of an element is calculated: whether they include the padding and borders or not.
+    'border-box' means the width and height of the element apply to all parts of the element and include the content, padding and border*/
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    /* display sets the behaviour of the element. 'flex' turns it into a flexbox container, it behaves like a block element on its own*/
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    /* arranges the containers into  a flexbox, because no direction is set, it arranges them in a row */
+    width: 90vw;
+}
+
+.panel {
+    background-size: cover;
+    /* cover will resive the background image to make sure the element is fully covered and the whole image is visible */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    flex: 0.5;
+    /* 0.5 represents how much space an element should take up in relation to other elements within the same container */
+    margin: 10px;
+    position: relative;
+    transition: flex 0.7s ease-in;
+    /* when the panels are changing size, the transition adds design on how they change, it's like adding an animation in figma*/
+}
+
+.panel h3 {
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    /* bottom and left is setting the location of the h3*/
+    margin: 0;
+    opacity: 0;
+    /* we only want the h3 to show if its active, so we set the opacity to 0, which will make the h3 invisible when the panel is not set to active*/
+}
+
+.panel.active {
+    flex: 5;
+    /* sets the active panel to take up more width*/
+}
+
+.panel.active h3 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s; /* arguments: the property to have the transition, duration of transition, type of transition, delay*/
+    /* if the panel is active we are setting the opacity to 1 (100%) so that it is visible*/
+}
+
+@media(max-width: 480px) {
+   .container {
+    width: 100vw;
+   }
+
+   .panel:nth-of-type(4), .panel:nth-of-type(5) {
+    display: none;
+   }
+   /* this psuedo selector is selecting the 4th and 5th of the panel and displaying them to none, which in effect gets rid of them and they become no longer visible*/
+}
+/* this media property means that any style within, will only take effect if the screen is under 480px */
